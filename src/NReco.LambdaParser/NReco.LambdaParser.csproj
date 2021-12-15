@@ -59,6 +59,7 @@ v.1.0.6 changes:
     <GenerateAssemblyVersionAttribute>false</GenerateAssemblyVersionAttribute>
     <GenerateAssemblyFileVersionAttribute>false</GenerateAssemblyFileVersionAttribute>
     <LangVersion>9</LangVersion>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 	
   </PropertyGroup>
 
