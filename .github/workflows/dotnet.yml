@@ -30,7 +30,7 @@ jobs:
       run: dotnet nuget add source --username $NUGET_PACKAGES_USERNAME --password $NUGET_PACKAGES_PSW --store-password-in-clear-text --name github "https://nuget.pkg.github.com/DCoreSoftware/index.json"
     - name: Nuget push
       env:
-        NUGET_PACKAGES_APIKEY: ${{ secrets.NUGET_PACKAGES_APIKEY }}
+        NUGET_PACKAGES_APIKEY: ${{ secrets.API_KEY }}
       run: dotnet nuget push ./src/**/*.nupkg  --api-key $NUGET_PACKAGES_APIKEY --source "github" --skip-duplicate      
       
 
