@@ -17,15 +17,16 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 5.0.x        
+    - name: Restore dependencies
+      run: dotnet restore ./src
+    - name: Build
+      run: dotnet build ./src/NReco.LambdaParser.sln --no-restore
+    - name: Test
+      run: dotnet test ./src/NReco.LambdaParser.Tests/NReco.LambdaParser.Tests.csproj --no-build --verbosity normal
     - name: Nuget add
       env:
         NUGET_PACKAGES_USERNAME: ${{ secrets.NUGET_PACKAGES_USERNAME }}
         NUGET_PACKAGES_PSW: ${{ secrets.NUGET_PACKAGES_PSW }}
       run: dotnet nuget add source --username $NUGET_PACKAGES_USERNAME --password $NUGET_PACKAGES_PSW --store-password-in-clear-text --name github "https://nuget.pkg.github.com/DCoreSoftware/index.json"
-    - name: Restore dependencies
-      run: dotnet restore
-    - name: Build
-      run: dotnet build --no-restore
-    - name: Test
-      run: dotnet test --no-build --verbosity normal
+      
 
